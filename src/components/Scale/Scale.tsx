@@ -11,6 +11,8 @@ interface IScaleProps {
     arcEndRad: number;
     low: number;
     high: number;
+    arcBedWidth?: number;
+    arcBedRadius?: number;
 }
 
 const Scale = (props: IScaleProps) => {
@@ -18,7 +20,7 @@ const Scale = (props: IScaleProps) => {
 
     useEffect(() => {
         const canvas = canvasRef.current
-        let context;
+        let context: CanvasRenderingContext2D | null;
         if(canvas) {
             canvas.style.width = props.size + "px";
             canvas.style.height = props.size + "px";
@@ -34,7 +36,7 @@ const Scale = (props: IScaleProps) => {
             if(context) {
                 context.scale(scale, scale);
     
-                drawScale(context, props.arcStartRad, props.arcEndRad, ticks, props.radius, center);
+                drawScale(context, props.arcStartRad, props.arcEndRad, ticks, props.radius, center, props.arcBedRadius, props.arcBedWidth);
             }
         }
         
