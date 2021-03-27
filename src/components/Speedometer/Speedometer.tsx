@@ -4,8 +4,8 @@ import styles from './Speedometer.module.css';
 
 const Speedometer = () => {
     return (
-        <div>
-            <Display />
+        <div className={styles.speedometer}>
+            <Display value="10" />
         </div>
     );
 };

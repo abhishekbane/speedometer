@@ -1,0 +1,10 @@
+.speedometer {
+    width: 25rem;
+    height: 25rem;
+    background-color: var(--base-colour);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 4px;
+}
