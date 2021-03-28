@@ -5,3 +5,9 @@
     align-items: center;
     background-color: #222;
 }
+
+@media (orientation: landscape) and (max-height: 24rem) {
+    .app {
+        align-items: stretch;
+    }
+}
