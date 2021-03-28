@@ -13,7 +13,8 @@ export const drawScale = (
     arcEndRad: number, 
     ticks: number, 
     radius: number, 
-    center: number, 
+    center: number,
+	low: number, 
     arcBedRadius?: number,
     arcBedWidth?: number) => {
         
@@ -65,7 +66,7 @@ export const drawScale = (
             context.shadowBlur = 0;
 
             if(radius>150 || (radius<151 && (count%20===0)) ) {
-                context.fillText((count*2).toString(), center+(endOffset-18)*Math.cos(arcLength), center+(endOffset-18)*Math.sin(arcLength));
+                context.fillText(((count*2)+low).toString(), center+(endOffset-18)*Math.cos(arcLength), center+(endOffset-18)*Math.sin(arcLength));
                 context.beginPath();
             }
 			

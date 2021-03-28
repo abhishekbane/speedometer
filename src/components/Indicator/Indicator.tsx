@@ -1,8 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import styles from 'Indicator.module.css';
 import { Arc } from './IndicatorUtility';
-import { useState } from 'react';
 
 interface IIndicatorProps {
     radius: number;
@@ -47,12 +45,13 @@ const Indicator = (props: IIndicatorProps) => {
                 arc.arcEndRad = props.arcEndRad;
                 arc.arcStartRad = props.arcStartRad;
                 arc.angleRad = props.arcStartRad;
-                arc.startX = arc.x+arc.radius*Math.cos(arc.arcStartRad);
-                arc.startY = arc.y+arc.radius*Math.sin(arc.arcStartRad);
+                arc.startX = center+props.radius*Math.cos(props.arcStartRad);
+                arc.startY = center+props.radius*Math.sin(props.arcStartRad);
+                arc.low = props.low;
                 setContext(_context);
             }
         }
-    }, [props.size, props.radius]);
+    }, [props.size, props.radius, props.arcEndRad, props.arcStartRad, props.width, props.low]);
 
     useEffect(() => {
         if(context) {

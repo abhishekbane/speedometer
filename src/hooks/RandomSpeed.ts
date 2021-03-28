@@ -1,27 +1,38 @@
 import { useState } from "react"
 
-export const useRandomSpeed = (initialSpeed: number, minSpeed: number, maxSpeed: number) => {
-    const [speed, setSpeed] = useState(initialSpeed);
+export const useRandomSpeed = (minSpeed: number, maxSpeed: number, maxStep: number) => {
+    const [randSpeed, setSpeed] = useState(minSpeed);
 
     const generateRandomSpeed = () => {
         setInterval(() => {
             setSpeed (prevSpeed => {
-                const incSpeed = Math.round(prevSpeed+(Math.random() * maxSpeed/10));
-                const decSpeed = Math.round(prevSpeed-(Math.random() * maxSpeed/10));
+                let _speed;
+                const step = maxStep*Math.random();
                 const toss = Math.random();
-    
-                if(toss<0.6 && incSpeed <= maxSpeed){
-                    return incSpeed;
-                }
-                else if(decSpeed >= minSpeed) {
-                    return decSpeed;
+                if(toss<0.6){
+                    _speed = prevSpeed + step;
+                    if(_speed > maxSpeed) {
+                        _speed = prevSpeed - step;
+                    }
+                    if(_speed<minSpeed) {
+                        return prevSpeed;
+                    }
+                    return Math.round(_speed);
                 }
                 else {
-                    return speed;
+                    _speed = prevSpeed - step;
+                    if(_speed < minSpeed) {
+                        _speed = prevSpeed + step;
+                    }
+                    if(_speed>maxSpeed) {
+                        return prevSpeed;
+                    }
+                    return Math.round(_speed);
                 }
+                
             });
         }, 1000);
     };
 
-    return {speed, generateRandomSpeed};
+    return {randSpeed, generateRandomSpeed};
 }

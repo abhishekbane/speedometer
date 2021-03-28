@@ -1,7 +1,6 @@
 
 import { drawScale } from './ScaleUtility';
 
-import styles from 'Scale.module.css';
 import { useEffect, useRef } from 'react';
 
 interface IScaleProps {
@@ -36,11 +35,11 @@ const Scale = (props: IScaleProps) => {
             if(context) {
                 context.scale(scale, scale);
     
-                drawScale(context, props.arcStartRad, props.arcEndRad, ticks, props.radius, center, props.arcBedRadius, props.arcBedWidth);
+                drawScale(context, props.arcStartRad, props.arcEndRad, ticks, props.radius, center, props.low, props.arcBedRadius, props.arcBedWidth);
             }
         }
         
-    },[props.arcEndRad, props.arcStartRad, props.radius, props.size, props.high, props.low]);
+    },[props.arcEndRad, props.arcStartRad, props.radius, props.size, props.high, props.low, props.arcBedRadius, props.arcBedWidth]);
 
     return (
         <canvas ref={canvasRef} id="canvasScale">

@@ -6,8 +6,6 @@ interface IDisplayProps {
     value: string;
 }
 
-export const MAX_CHARS = 3;
-
 const Display = (props: IDisplayProps) => {
     
     return (

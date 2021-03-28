@@ -1,4 +1,4 @@
-import { ACCENT_COLOUR, BASE_COLOUR, SECONDARY_COLOUR } from "../../utility/theme";
+import { ACCENT_COLOUR, SECONDARY_COLOUR } from "../../utility/theme";
 
 interface IArc {
     x: number; 
@@ -14,6 +14,7 @@ export class Arc {
     public arcStartRad: number = 0;
     public arcEndRad: number = 0; 
     public indicatorEnd: number = 0; 
+    public low: number= 0;
     public x: number = 0;
     public y: number = 0;
     public width: number = 0;
@@ -57,7 +58,7 @@ export class Arc {
 
     update() {
         this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
-
+        
         this.drawLead({
             x: this.startX,
             y: this.startY,

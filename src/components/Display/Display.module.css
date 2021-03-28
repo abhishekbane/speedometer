@@ -19,6 +19,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    box-shadow: 0 200px 118px -118px rgb(255, 255, 255, 0.01) inset
 }
 
 .contentBox {
