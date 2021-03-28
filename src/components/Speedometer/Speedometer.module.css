@@ -35,7 +35,7 @@
         position: relative;
         width: 24rem;
         height: 24rem;
-        overflow: hidden;
+        overflow: visible;
         padding-top: 0;
     }
 }
